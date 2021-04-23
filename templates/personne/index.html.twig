@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PersonneController!{% endblock %}
+
+{% block body %}
+<table border="2" cellspacing="3" cellpadding="3" width>
+    <tr>
+        <th>Prenom</th>
+        <th>Nom</th>
+        <th>Date</th>
+        <th>Adresse</th>
+        <th>Taille</th>
+        <th>Salaire</th>
+        <th colspan="3">Action</th>
+    </tr>
+
+    {% for personne in personnes %}
+
+        <tr>
+            <td>{{personne.prenom}}</td>
+            <td>{{personne.nom}}</td>
+            <td>{{personne.adresse}}</td>
+            <td>{{personne.taille}}</td>
+            <td>{{personne.salaire}}</td>
+            <td>{{personne.date|date('d/m/y')}}</td>
+            <td><a href="{{path('personne_update', {'id': personne.id})}}" onclick=" return render ('personne/create.html.twig')">modify</a></td>
+            <td><a href="{{ path('personne_delete', {'id': personne.id})}}" onclick="return confirm ('supprimer?')">supprimer</a></td>
+        </tr>
+        
+    {% endfor %}
+</table>
+{% endblock %}

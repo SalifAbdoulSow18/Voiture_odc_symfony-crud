@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VoitureController!{% endblock %}
+
+{% block body %}
+<table border="2" cellspacing="3" cellpadding="3" width>
+    <tr>
+        <th>Numero</th>
+        <th>Annee</th>
+        <th>Prix</th>
+        <th>Carburant</th>
+        <th>couleur</th>
+        <th>Kilometrage</th>
+        <th>Proprietaire</th>
+        <th colspan="3">Action</th>
+    </tr>
+
+    {% for voiture in voitures %}
+
+        <tr>
+            <td>{{voiture.numero}}</td>
+            <td>{{voiture.annee|date('d/m/y')}}</td>
+            <td>{{voiture.prix}}</td>
+            <td>{{voiture.carburant}}</td>
+            <td>{{voiture.couleur}}</td>
+            <td>{{voiture.kilometrage}}</td>
+            <td>{{voiture.personne.nom}}</td>
+            <td>Modified</td>
+            <td>supprimer</td>
+        </tr>
+        
+    {% endfor %}
+</table>
+{% endblock %}
